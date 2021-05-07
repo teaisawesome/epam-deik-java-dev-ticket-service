@@ -12,6 +12,8 @@ public class LoginServiceImpl implements LoginService {
 
     private final UserRepository userRepository;
 
+    private UserAccount loggedUser = null;
+
     public LoginServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -21,11 +23,33 @@ public class LoginServiceImpl implements LoginService {
         Optional<UserAccount> userAccount = userRepository.getUserByUsernameAndPassword(username, password);
 
         if (userAccount.isPresent()) {
-            return "Login success" + userAccount.get().getUsername() + " " + userAccount.get().getPassword();
-        }
-        else
-        {
+            loggedUser = userAccount.get();
+            return "Login success";
+        } else {
             return "Login failed due to incorrect credentials";
         }
+    }
+
+    @Override
+    public String describeLoggedInAccount() {
+        if (loggedUser == null) {
+            return "You are not signed in";
+        }
+
+        if (loggedUser.isAdminUser()) {
+            return "Signed in with privileged account '" + loggedUser.getUsername() + "'";
+        }
+
+        return "Signed in with account '" + loggedUser.getUsername() + "'";
+    }
+
+    @Override
+    public void signOut() {
+        loggedUser = null;
+    }
+
+    @Override
+    public Optional<UserAccount> getLoggedInUser() {
+        return Optional.ofNullable(loggedUser);
     }
 }
