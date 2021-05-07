@@ -5,10 +5,10 @@ import com.epam.training.ticketservice.dataaccess.entities.UserEntity;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.List;
 
 @Component
 public class UserDatabaseInitializer {
+
     private UserDao userDao;
 
     public UserDatabaseInitializer(UserDao userDao) {
@@ -18,5 +18,6 @@ public class UserDatabaseInitializer {
     @PostConstruct
     public void initDatabase() {
         UserEntity adminUser = new UserEntity("admin","admin",true);
+        userDao.save(adminUser);
     }
 }
