@@ -16,7 +16,9 @@ public abstract class AbstractAuthenticatedCommand {
     }
 
     protected Availability admin() {
-        return isLoggedIn() && isAdmin() ? Availability.available() : Availability.unavailable("You are not an admin user");
+        return isLoggedIn() && isAdmin()
+                ? Availability.available()
+                : Availability.unavailable("You are not an admin user");
     }
 
     private boolean isLoggedIn() {

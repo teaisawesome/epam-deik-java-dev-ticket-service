@@ -31,6 +31,14 @@ public class MovieEntity {
 
     }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     public String getTitle() {
         return title;
     }
