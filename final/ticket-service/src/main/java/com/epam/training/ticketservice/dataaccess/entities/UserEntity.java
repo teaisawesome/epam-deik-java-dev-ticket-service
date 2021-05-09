@@ -54,7 +54,9 @@ public class UserEntity {
             return false;
         }
         UserEntity that = (UserEntity) o;
-        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(isAdmin, that.isAdmin);
+        return Objects.equals(username, that.username)
+                && Objects.equals(password, that.password)
+                && Objects.equals(isAdmin, that.isAdmin);
     }
 
     @Override

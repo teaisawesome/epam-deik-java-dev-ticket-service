@@ -1,11 +1,11 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-ticket-service,com.epam.training.ticketservice.service.impl,LoginServiceImpl,25,78,5,7,2,20,7,7,2,6
-ticket-service,com.epam.training.ticketservice.repository.impl,JpaUserRepository,34,0,2,0,8,0,4,0,3,0
+ticket-service,com.epam.training.ticketservice.service.impl,LoginServiceImpl,25,78,5,7,4,20,7,7,2,6
+ticket-service,com.epam.training.ticketservice.repository.impl,JpaUserRepository,13,53,3,5,3,12,4,5,1,4
 ticket-service,com.epam.training.ticketservice.presentation.cli.handlers,LoginCommandHandler,50,0,6,0,13,0,7,0,4,0
-ticket-service,com.epam.training.ticketservice.domain.user,UserAccount,9,12,0,0,3,5,3,1,3,1
+ticket-service,com.epam.training.ticketservice.domain.user,UserAccount,42,48,6,6,7,11,11,2,5,2
 ticket-service,com.epam.training.ticketservice.presentation.cli,Application,8,0,0,0,3,0,2,0,2,0
 ticket-service,com.epam.training.ticketservice.presentation.cli,TicketServicePromptProvider,8,0,0,0,2,0,2,0,2,0
-ticket-service,com.epam.training.ticketservice.dataaccess.entities,UserEntity,24,0,0,0,10,0,5,0,5,0
-ticket-service,com.epam.training.ticketservice.dataaccess.init,UserDatabaseInitializer,19,0,0,0,6,0,2,0,2,0
+ticket-service,com.epam.training.ticketservice.dataaccess.entities,UserEntity,36,57,6,6,6,14,9,5,3,5
+ticket-service,com.epam.training.ticketservice.dataaccess.init,UserDatabaseInitializer,0,19,0,0,0,6,0,2,0,2
 ticket-service,com.epam.training.ticketservice.presentation.cli.configuration,CliConfiguration,3,0,0,0,1,0,1,0,1,0
 ticket-service,com.epam.training.ticketservice.dataaccess.configuration,JpaConfiguration,3,0,0,0,1,0,1,0,1,0

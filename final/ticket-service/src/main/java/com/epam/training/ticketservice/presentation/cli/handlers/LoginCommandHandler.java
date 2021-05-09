@@ -1,15 +1,12 @@
 package com.epam.training.ticketservice.presentation.cli.handlers;
 
 
-import com.epam.training.ticketservice.domain.user.User;
 import com.epam.training.ticketservice.domain.user.UserAccount;
 import com.epam.training.ticketservice.service.LoginService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 @ShellComponent
 public class LoginCommandHandler {
@@ -37,7 +34,7 @@ public class LoginCommandHandler {
     public String describeAccount() {
         Optional<UserAccount> userAccount = loginService.describeLoggedInAccount();
 
-        if (userAccount.isPresent()) {
+        if (userAccount.isEmpty()) {
             return "You are not signed in";
         }
 

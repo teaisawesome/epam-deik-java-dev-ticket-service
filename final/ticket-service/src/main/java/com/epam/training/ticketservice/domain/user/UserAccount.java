@@ -40,7 +40,9 @@ public class UserAccount implements User {
             return false;
         }
         UserAccount that = (UserAccount) o;
-        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(isAdmin, that.isAdmin);
+        return Objects.equals(username, that.username)
+                && Objects.equals(password, that.password)
+                && Objects.equals(isAdmin, that.isAdmin);
     }
 
     @Override

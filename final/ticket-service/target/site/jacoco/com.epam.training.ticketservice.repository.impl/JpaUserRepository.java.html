@@ -7,6 +7,7 @@ import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -15,23 +16,40 @@ public class JpaUserRepository implements UserRepository {
     private UserDao userDao;
 
     @Autowired
-<span class="nc" id="L18">    public JpaUserRepository(UserDao userDao) {</span>
-<span class="nc" id="L19">        this.userDao = userDao;</span>
-<span class="nc" id="L20">    }</span>
+<span class="fc" id="L19">    public JpaUserRepository(UserDao userDao) {</span>
+<span class="fc" id="L20">        this.userDao = userDao;</span>
+<span class="fc" id="L21">    }</span>
 
     @Override
     public Optional&lt;UserAccount&gt; getUserByUsernameAndPassword(String username, String password) {
-<span class="nc" id="L24">        Optional&lt;UserEntity&gt; result = userDao.findUserEntityByUsernameAndPassword(username, password);</span>
+<span class="fc" id="L25">        Optional&lt;UserEntity&gt; result = userDao.findUserEntityByUsernameAndPassword(username, password);</span>
 
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (result.isPresent()) {</span>
-<span class="nc" id="L27">            return Optional.of(mapUserEntity(result.get()));</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (result.isPresent()) {</span>
+<span class="fc" id="L28">            return Optional.of(mapUserEntity(result.get()));</span>
         }
 
-<span class="nc" id="L30">        return Optional.empty();</span>
+<span class="fc" id="L31">        return Optional.empty();</span>
     }
 
     private UserAccount mapUserEntity(UserEntity userEntity) {
-<span class="nc" id="L34">        return new UserAccount(userEntity.getUsername(), userEntity.getPassword(), userEntity.isAdmin());</span>
+<span class="fc" id="L35">        return new UserAccount(userEntity.getUsername(), userEntity.getPassword(), userEntity.isAdmin());</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (this == o) {</span>
+<span class="nc" id="L41">            return true;</span>
+        }
+<span class="pc bpc" id="L43" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L44">            return false;</span>
+        }
+<span class="fc" id="L46">        JpaUserRepository that = (JpaUserRepository) o;</span>
+<span class="fc" id="L47">        return Objects.equals(userDao, that.userDao);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L52">        return Objects.hash(userDao);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

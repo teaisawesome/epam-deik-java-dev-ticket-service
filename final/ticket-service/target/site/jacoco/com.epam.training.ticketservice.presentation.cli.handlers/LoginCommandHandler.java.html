@@ -37,7 +37,7 @@ public class LoginCommandHandler {
     public String describeAccount() {
 <span class="nc" id="L38">        Optional&lt;UserAccount&gt; userAccount = loginService.describeLoggedInAccount();</span>
 
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (userAccount.isPresent()) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (userAccount.isEmpty()) {</span>
 <span class="nc" id="L41">            return &quot;You are not signed in&quot;;</span>
         }
 
