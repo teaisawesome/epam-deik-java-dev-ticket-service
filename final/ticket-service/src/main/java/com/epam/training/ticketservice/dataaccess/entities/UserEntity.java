@@ -1,9 +1,12 @@
 package com.epam.training.ticketservice.dataaccess.entities;
 
+import com.epam.training.ticketservice.domain.user.UserAccount;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -40,5 +43,27 @@ public class UserEntity {
 
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(username, that.isAdmin) && Objects.equals(isAdmin, that.isAdmin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, isAdmin);
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" + "username=" + username + ", isAdmin=" + isAdmin + '}';
     }
 }

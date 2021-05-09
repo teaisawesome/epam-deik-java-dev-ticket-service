@@ -7,6 +7,7 @@ import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -32,5 +33,22 @@ public class JpaUserRepository implements UserRepository {
 
     private UserAccount mapUserEntity(UserEntity userEntity) {
         return new UserAccount(userEntity.getUsername(), userEntity.getPassword(), userEntity.isAdmin());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        JpaUserRepository that = (JpaUserRepository) o;
+        return Objects.equals(userDao, that.userDao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userDao);
     }
 }
