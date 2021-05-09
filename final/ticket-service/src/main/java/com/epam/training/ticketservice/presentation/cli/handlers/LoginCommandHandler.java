@@ -1,9 +1,15 @@
 package com.epam.training.ticketservice.presentation.cli.handlers;
 
 
+import com.epam.training.ticketservice.domain.user.User;
+import com.epam.training.ticketservice.domain.user.UserAccount;
 import com.epam.training.ticketservice.service.LoginService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @ShellComponent
 public class LoginCommandHandler {
@@ -16,7 +22,9 @@ public class LoginCommandHandler {
 
     @ShellMethod(value = "Login as Admin User", key = "sign in privileged")
     public String login(String username, String password) {
-        return loginService.signIn(username, password);
+        Optional<UserAccount> userAccount = loginService.signIn(username, password);
+
+        return userAccount.isPresent() ? "Login success" : "Login failed due to incorrect credentials";
     }
 
     @ShellMethod(value = "Sign out with User", key = "sign out")
@@ -27,6 +35,16 @@ public class LoginCommandHandler {
 
     @ShellMethod(value = "Describe logged in User Account", key = "describe account")
     public String describeAccount() {
-        return loginService.describeLoggedInAccount();
+        Optional<UserAccount> userAccount = loginService.describeLoggedInAccount();
+
+        if (userAccount.isPresent()) {
+            return "You are not signed in";
+        }
+
+        if (userAccount.get().isAdminUser()) {
+            return "Signed in with privileged account '" + userAccount.get().getUsername() + "'";
+        }
+
+        return "Signed in with account '" + userAccount.get().getUsername() + "'";
     }
 }

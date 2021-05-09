@@ -1,1 +1,14 @@
-C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\Application.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\dao\UserDao.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\LoginServiceImpl.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaUserRepository.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\configuration\CliConfiguration.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\TicketServicePromptProvider.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\LoginService.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\UserAccount.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\Application.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\LoginCommandHandler.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\configuration\JpaConfiguration.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\entities\UserEntity.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\UserRepository.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\init\UserDatabaseInitializer.java
+C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\User.java
