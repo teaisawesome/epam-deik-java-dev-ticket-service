@@ -1,51 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginCommandHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.presentation.cli.handlers</a> &gt; <span class="el_source">LoginCommandHandler.java</span></div><h1>LoginCommandHandler.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.presentation.cli.handlers;
 
 
-import com.epam.training.ticketservice.domain.user.User;
 import com.epam.training.ticketservice.domain.user.UserAccount;
 import com.epam.training.ticketservice.service.LoginService;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 @ShellComponent
 public class LoginCommandHandler {
 
     private LoginService loginService;
 
-<span class="nc" id="L19">    public LoginCommandHandler(LoginService loginService) {</span>
-<span class="nc" id="L20">        this.loginService = loginService;</span>
-<span class="nc" id="L21">    }</span>
+<span class="nc" id="L16">    public LoginCommandHandler(LoginService loginService) {</span>
+<span class="nc" id="L17">        this.loginService = loginService;</span>
+<span class="nc" id="L18">    }</span>
 
     @ShellMethod(value = &quot;Login as Admin User&quot;, key = &quot;sign in privileged&quot;)
     public String login(String username, String password) {
-<span class="nc" id="L25">        Optional&lt;UserAccount&gt; userAccount = loginService.signIn(username, password);</span>
+<span class="nc" id="L22">        Optional&lt;UserAccount&gt; userAccount = loginService.signIn(username, password);</span>
 
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        return userAccount.isPresent() ? &quot;Login success&quot; : &quot;Login failed due to incorrect credentials&quot;;</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        return userAccount.isPresent() ? &quot;Login success&quot; : &quot;Login failed due to incorrect credentials&quot;;</span>
     }
 
     @ShellMethod(value = &quot;Sign out with User&quot;, key = &quot;sign out&quot;)
     public String signOut() {
-<span class="nc" id="L32">        loginService.signOut();</span>
-<span class="nc" id="L33">        return &quot;Successfully signed out!&quot;;</span>
+<span class="nc" id="L29">        loginService.signOut();</span>
+<span class="nc" id="L30">        return &quot;Successfully signed out!&quot;;</span>
     }
 
     @ShellMethod(value = &quot;Describe logged in User Account&quot;, key = &quot;describe account&quot;)
     public String describeAccount() {
-<span class="nc" id="L38">        Optional&lt;UserAccount&gt; userAccount = loginService.describeLoggedInAccount();</span>
+<span class="nc" id="L35">        Optional&lt;UserAccount&gt; userAccount = loginService.describeLoggedInAccount();</span>
 
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        if (userAccount.isEmpty()) {</span>
-<span class="nc" id="L41">            return &quot;You are not signed in&quot;;</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (!userAccount.isPresent()) {</span>
+<span class="nc" id="L38">            return &quot;You are not signed in&quot;;</span>
         }
 
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (userAccount.get().isAdminUser()) {</span>
-<span class="nc" id="L45">            return &quot;Signed in with privileged account '&quot; + userAccount.get().getUsername() + &quot;'&quot;;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (userAccount.get().isAdminUser()) {</span>
+<span class="nc" id="L42">            return &quot;Signed in with privileged account '&quot; + userAccount.get().getUsername() + &quot;'&quot;;</span>
         }
 
-<span class="nc" id="L48">        return &quot;Signed in with account '&quot; + userAccount.get().getUsername() + &quot;'&quot;;</span>
+<span class="nc" id="L45">        return &quot;Signed in with account '&quot; + userAccount.get().getUsername() + &quot;'&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

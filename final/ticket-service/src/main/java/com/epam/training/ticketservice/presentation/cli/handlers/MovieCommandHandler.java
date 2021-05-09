@@ -33,7 +33,6 @@ public class MovieCommandHandler extends AbstractAuthenticatedCommand {
                 : "Movie Creation Failed! Movie with given title already exists!";
     }
 
-    @ShellMethodAvailability(value = "loggedIn")
     @ShellMethod(value = "List movies", key = "list movies")
     public String listAllMovies() {
         List<Movie> movies = movieService.listMovies();

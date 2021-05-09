@@ -11,6 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JpaMovieRepositoryTest {
 
     private MovieDao movieDao;
@@ -53,5 +56,105 @@ public class JpaMovieRepositoryTest {
         Mockito.verifyNoMoreInteractions(movieDao);
     }
 
+    @Test
+    public void testSaveMovieToDatabaseShouldReturnFalseWhenGivenMovieAlreadyExists() {
+        // Given
+        Mockito.when(movieDao.existsByTitle(TITLE_ALIEN))
+                .thenReturn(true);
 
+        // When
+        boolean actual = underTest.saveMovieToDatabase(MOVIE_ENTITY_ALIEN);
+
+        // Then
+        Assertions.assertFalse(actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_ALIEN);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testDeleteMovieFromDatabaseShouldReturnTrueAndDeleteMovieWhenMovieAlreadyExists() {
+        // Given
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(true);
+
+        // When
+        boolean actual = underTest.deleteMovieFromDatabase(TITLE_AVENGERS);
+
+        // Then
+        Assertions.assertTrue(actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verify(movieDao).deleteByTitle(TITLE_AVENGERS);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testDeleteMovieFromDatabaseShouldReturnFalseAndDeletionFailedWhenMovieDoesntExists() {
+        // Given
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(false);
+
+        // When
+        boolean actual = underTest.deleteMovieFromDatabase(TITLE_AVENGERS);
+
+        // Then
+        Assertions.assertFalse(actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testFindAllMoviesShouldReturnMovieEntityList() {
+        // Given
+        List<MovieEntity> expected = new ArrayList<>();
+        expected.add(MOVIE_ENTITY_ALIEN);
+        expected.add(MOVIE_ENTITY_AVENGERS);
+        Mockito.when(movieDao.findAll())
+                .thenReturn(expected);
+
+        // When
+        List<MovieEntity> actual = underTest.findAllMovies();
+
+        // Then
+        Assertions.assertEquals(expected, actual);
+        Mockito.verify(movieDao).findAll();
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testUpdateMovieFromDatabaseShouldReturnTrueWhenMovieUpdateIsComplete() {
+        // Given
+        MovieEntity movieEntity = new MovieEntity(TITLE_AVENGERS, GENRE_ALIEN, LENGTH_ALIEN);
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(true);
+        Mockito.when(movieDao.getMovieEntityByTitle(TITLE_AVENGERS))
+                .thenReturn(MOVIE_ENTITY_AVENGERS);
+        Mockito.when(movieDao.save(movieEntity))
+                .thenReturn(movieEntity);
+
+        // When
+        boolean actual = underTest.updateMovieFromDatabase(movieEntity);
+
+        // Then
+        Assertions.assertTrue(actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verify(movieDao).getMovieEntityByTitle(TITLE_AVENGERS);
+        Mockito.verify(movieDao).save(movieEntity);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testUpdateMovieFromDatabaseShouldReturnFalseWhenMovieUpdateIsFailedBecauseMoveDoesntExists() {
+        // Given
+        MovieEntity movieEntity = new MovieEntity(TITLE_AVENGERS, GENRE_ALIEN, LENGTH_ALIEN);
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(false);
+
+        // When
+        boolean actual = underTest.updateMovieFromDatabase(movieEntity);
+
+        // Then
+        Assertions.assertFalse(actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
 }
