@@ -65,9 +65,4 @@ public class LoginServiceImpl implements LoginService {
     public int hashCode() {
         return Objects.hash(userRepository, loggedUser);
     }
-
-    @Override
-    public String toString() {
-        return "LoginServiceImpl{" + "userRepository=" + userRepository + ", loggedUser=" + loggedUser + '}';
-    }
 }

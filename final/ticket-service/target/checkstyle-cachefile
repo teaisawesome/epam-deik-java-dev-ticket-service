@@ -1,8 +1,8 @@
-#Sun May 09 22:29:28 CEST 2021
+#Sun May 09 23:55:05 CEST 2021
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\dataaccess\\dao\\MovieDao.java=1620591426023
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\domain\\user\\Movie.java=1620587866436
-C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\MovieService.java=1620591098146
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\dataaccess\\configuration\\JpaConfiguration.java=1620398384136
+C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\MovieService.java=1620591098146
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\impl\\LoginServiceImpl.java=1620581822795
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\impl\\JpaMovieRepository.java=1620591777040
 C\:\\beadando\\epam-deik-java-dev\\final\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\presentation\\cli\\TicketServicePromptProvider.java=1620390203263
