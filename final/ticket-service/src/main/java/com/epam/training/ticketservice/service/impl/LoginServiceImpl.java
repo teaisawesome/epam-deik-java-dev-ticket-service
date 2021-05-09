@@ -38,7 +38,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Optional<UserAccount> describeLoggedInAccount() {
         if (loggedUser == null) {
-            return Optional.empty();
+            return Optional.ofNullable(null);
         }
 
         return Optional.of(loggedUser);

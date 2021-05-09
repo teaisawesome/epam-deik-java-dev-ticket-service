@@ -34,7 +34,7 @@ public class LoginCommandHandler {
     public String describeAccount() {
         Optional<UserAccount> userAccount = loginService.describeLoggedInAccount();
 
-        if (userAccount.isEmpty()) {
+        if (!userAccount.isPresent()) {
             return "You are not signed in";
         }
 
