@@ -54,16 +54,16 @@ public class UserEntity {
             return false;
         }
         UserEntity that = (UserEntity) o;
-        return Objects.equals(username, that.isAdmin) && Objects.equals(isAdmin, that.isAdmin);
+        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(isAdmin, that.isAdmin);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, isAdmin);
+        return Objects.hash(username, password, isAdmin);
     }
 
     @Override
     public String toString() {
-        return "UserEntity{" + "username=" + username + ", isAdmin=" + isAdmin + '}';
+        return "UserEntity{" + "username=" + username + "password=" + password + ", isAdmin=" + isAdmin + '}';
     }
 }
