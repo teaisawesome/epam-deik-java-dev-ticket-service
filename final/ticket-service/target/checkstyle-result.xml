@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\RoomCommandHandler.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaRoomRepository.java">
+</file>
 </checkstyle>

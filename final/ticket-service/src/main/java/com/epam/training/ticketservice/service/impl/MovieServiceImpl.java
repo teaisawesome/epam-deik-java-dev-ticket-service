@@ -1,9 +1,7 @@
 package com.epam.training.ticketservice.service.impl;
 
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
-import com.epam.training.ticketservice.dataaccess.entities.UserEntity;
 import com.epam.training.ticketservice.domain.user.Movie;
-import com.epam.training.ticketservice.domain.user.UserAccount;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
