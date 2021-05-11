@@ -2,6 +2,7 @@ package com.epam.training.ticketservice.service;
 
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
 import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.service.impl.MovieServiceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class MovieServiceImplTest {
     private MovieRepository movieRepository;
+    private MovieEntityMapper movieEntityMapper;
 
     private MovieServiceImpl underTest;
 
@@ -33,7 +35,8 @@ public class MovieServiceImplTest {
     @BeforeEach
     public void init() {
         movieRepository = Mockito.mock(MovieRepository.class);
-        underTest = new MovieServiceImpl(movieRepository);
+        movieEntityMapper = Mockito.mock(MovieEntityMapper.class);
+        underTest = new MovieServiceImpl(movieRepository, movieEntityMapper);
     }
 
     @Test
@@ -113,6 +116,12 @@ public class MovieServiceImplTest {
 
         Mockito.when(movieRepository.findAllMovies())
                 .thenReturn(movies);
+
+        Mockito.when(movieEntityMapper.mapMovieEntity(MOVIE_ENTITY_ALIEN))
+                .thenReturn(MOVIE_ALIEN);
+
+        Mockito.when(movieEntityMapper.mapMovieEntity(MOVIE_ENTITY_AVENGERS))
+                .thenReturn(MOVIE_AVENGERS);
 
         // When
         List<Movie> actual = underTest.listMovies();

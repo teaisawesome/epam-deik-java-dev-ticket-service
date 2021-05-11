@@ -2,6 +2,7 @@
 
 
 import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.domain.user.Room;
 import com.epam.training.ticketservice.presentation.cli.helpers.ListToStringConverter;
 import org.springframework.stereotype.Component;
 
@@ -9,12 +10,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-<span class="nc" id="L12">public class ListToStringConverterImpl implements ListToStringConverter {</span>
+<span class="nc" id="L13">public class ListToStringConverterImpl implements ListToStringConverter {</span>
     @Override
     public String convertMovies(List&lt;Movie&gt; movies) {
-<span class="nc" id="L15">        return movies.stream()</span>
-<span class="nc" id="L16">                .map(movie -&gt; movie.getTitle() + &quot; &quot; + &quot;(&quot; + movie.getGenre() + &quot;, &quot; + movie.getLength() + &quot; minutes)&quot;)</span>
-<span class="nc" id="L17">                .collect(Collectors.joining(System.lineSeparator()));</span>
+<span class="nc" id="L16">        return movies.stream()</span>
+<span class="nc" id="L17">                .map(movie -&gt; movie.getTitle() + &quot; &quot; + &quot;(&quot; + movie.getGenre() + &quot;, &quot; + movie.getLength() + &quot; minutes)&quot;)</span>
+<span class="nc" id="L18">                .collect(Collectors.joining(System.lineSeparator()));</span>
+    }
+
+    @Override
+    public String convertRooms(List&lt;Room&gt; rooms) {
+<span class="nc" id="L23">        return rooms.stream()</span>
+<span class="nc" id="L24">                .map(room -&gt; &quot;Room &quot;</span>
+<span class="nc" id="L25">                        + room.getName()</span>
+                        + &quot; with &quot;
+<span class="nc" id="L27">                        + (room.getChairsRowsNumber() * room.getChairsColsNumber())</span>
+                        + &quot; seats, &quot;
+<span class="nc" id="L29">                        + room.getChairsRowsNumber()</span>
+                        + &quot; rows and &quot;
+<span class="nc" id="L31">                        + room.getChairsColsNumber()</span>
+                        + &quot; columns&quot;)
+<span class="nc" id="L33">                .collect(Collectors.joining(System.lineSeparator()));</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

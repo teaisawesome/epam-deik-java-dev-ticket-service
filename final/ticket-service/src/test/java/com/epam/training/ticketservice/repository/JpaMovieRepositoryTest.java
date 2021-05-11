@@ -1,11 +1,10 @@
 package com.epam.training.ticketservice.repository;
 
 import com.epam.training.ticketservice.dataaccess.dao.MovieDao;
-import com.epam.training.ticketservice.dataaccess.dao.UserDao;
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
 import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.impl.JpaMovieRepository;
-import com.epam.training.ticketservice.repository.impl.JpaUserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +16,7 @@ import java.util.List;
 public class JpaMovieRepositoryTest {
 
     private MovieDao movieDao;
+    private MovieEntityMapper movieEntityMapper;
     private JpaMovieRepository underTest;
 
     private final String TITLE_ALIEN = "Alien";
@@ -35,7 +35,8 @@ public class JpaMovieRepositoryTest {
     @BeforeEach
     public void init() {
         movieDao = Mockito.mock(MovieDao.class);
-        underTest = new JpaMovieRepository(movieDao);
+        movieEntityMapper = Mockito.mock(MovieEntityMapper.class);
+        underTest = new JpaMovieRepository(movieDao, movieEntityMapper);
     }
 
     @Test

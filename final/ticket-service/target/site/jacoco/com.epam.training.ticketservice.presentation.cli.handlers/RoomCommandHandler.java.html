@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoomCommandHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.presentation.cli.handlers</a> &gt; <span class="el_source">RoomCommandHandler.java</span></div><h1>RoomCommandHandler.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.presentation.cli.handlers;
+
+import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.domain.user.Room;
+import com.epam.training.ticketservice.presentation.cli.helpers.ListToStringConverter;
+import com.epam.training.ticketservice.service.LoginService;
+import com.epam.training.ticketservice.service.RoomService;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellMethodAvailability;
+
+import java.util.List;
+
+@ShellComponent
+public class RoomCommandHandler extends AbstractAuthenticatedCommand {
+
+    private RoomService roomService;
+
+    private ListToStringConverter listToStringConverter;
+
+    public RoomCommandHandler(LoginService loginService,
+                              RoomService roomService,
+                              ListToStringConverter listToStringConverter) {
+<span class="nc" id="L24">        super(loginService);</span>
+<span class="nc" id="L25">        this.roomService = roomService;</span>
+<span class="nc" id="L26">        this.listToStringConverter = listToStringConverter;</span>
+<span class="nc" id="L27">    }</span>
+
+    @ShellMethodAvailability(value = &quot;admin&quot;)
+    @ShellMethod(value = &quot;Create new room&quot;, key = &quot;create room&quot;)
+    public String createRoom(String roomName, int roomChairsRowsNumber, int roomChairsColsNumber) {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        return roomService.createRoom(roomName, roomChairsRowsNumber, roomChairsColsNumber)</span>
+<span class="nc" id="L33">                ? &quot;Room Created!&quot;</span>
+<span class="nc" id="L34">                : &quot;Room Creation Failed! Room with given room name already exists!&quot;;</span>
+    }
+
+    @ShellMethod(value = &quot;List rooms&quot;, key = &quot;list rooms&quot;)
+    public String listAllRooms() {
+<span class="nc" id="L39">        List&lt;Room&gt; rooms = roomService.listRooms();</span>
+
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (rooms.isEmpty()) {</span>
+<span class="nc" id="L42">            return &quot;There are no rooms at the moment&quot;;</span>
+        }
+
+<span class="nc" id="L45">        return listToStringConverter.convertRooms(rooms);</span>
+    }
+
+    @ShellMethodAvailability(value = &quot;admin&quot;)
+    @ShellMethod(value = &quot;Update room from rooms&quot;, key = &quot;update room&quot;)
+    public String updateMovie(String roomName, int roomChairsRowsNumber, int roomChairsColsNumber) {
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        return roomService.updateRoom(roomName, roomChairsRowsNumber, roomChairsColsNumber)</span>
+<span class="nc" id="L52">                ? &quot;Room Updated!&quot;</span>
+<span class="nc" id="L53">                : &quot;Room Update Failed! Room with given room name not exists!&quot;;</span>
+    }
+
+    @ShellMethodAvailability(value = &quot;admin&quot;)
+    @ShellMethod(value = &quot;Delete room from rooms&quot;, key = &quot;delete room&quot;)
+    public String deleteMovie(String roomName) {
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        return roomService.deleteRoom(roomName)</span>
+<span class="nc" id="L60">                ? &quot;Room Deleted!&quot;</span>
+<span class="nc" id="L61">                : &quot;Room Deletion Failed! Room with given room name not exists!&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

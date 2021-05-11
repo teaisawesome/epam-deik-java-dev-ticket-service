@@ -2,6 +2,7 @@ package com.epam.training.ticketservice.service.impl;
 
 import com.epam.training.ticketservice.dataaccess.entities.RoomEntity;
 import com.epam.training.ticketservice.domain.user.Room;
+import com.epam.training.ticketservice.mappers.RoomEntityMapper;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.service.RoomService;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,11 @@ import java.util.stream.Collectors;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
+    private final RoomEntityMapper roomEntityMapper;
 
-    public RoomServiceImpl(RoomRepository roomRepository) {
+    public RoomServiceImpl(RoomRepository roomRepository, RoomEntityMapper roomEntityMapper) {
         this.roomRepository = roomRepository;
+        this.roomEntityMapper = roomEntityMapper;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class RoomServiceImpl implements RoomService {
     public List<Room> listRooms() {
         return roomRepository.findAllRooms()
                 .stream()
-                .map(roomEntity -> mapRoomEntity(roomEntity))
+                .map(roomEntity -> roomEntityMapper.mapRoomEntity(roomEntity))
                 .collect(Collectors.toList());
     }
 
@@ -42,9 +45,5 @@ public class RoomServiceImpl implements RoomService {
     public boolean updateRoom(String name, int chairsRowsNumber, int chairsColsNumber) {
         RoomEntity roomEntity = new RoomEntity(name, chairsRowsNumber, chairsColsNumber);
         return roomRepository.updateRoomFromDatabase(roomEntity);
-    }
-
-    private Room mapRoomEntity(RoomEntity roomEntity) {
-        return new Room(roomEntity.getName(), roomEntity.getChairsRowsNumber(), roomEntity.getChairsColsNumber());
     }
 }

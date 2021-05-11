@@ -2,7 +2,10 @@ package com.epam.training.ticketservice.repository.impl;
 
 import com.epam.training.ticketservice.dataaccess.dao.MovieDao;
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
+import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.MovieRepository;
+import com.epam.training.ticketservice.repository.impl.exceptions.MovieNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,10 +15,12 @@ import java.util.List;
 public class JpaMovieRepository implements MovieRepository {
 
     private MovieDao movieDao;
+    private final MovieEntityMapper movieEntityMapper;
 
     @Autowired
-    public JpaMovieRepository(MovieDao movieDao) {
+    public JpaMovieRepository(MovieDao movieDao, MovieEntityMapper movieEntityMapper) {
         this.movieDao = movieDao;
+        this.movieEntityMapper = movieEntityMapper;
     }
 
     @Override
@@ -58,5 +63,19 @@ public class JpaMovieRepository implements MovieRepository {
         movieDao.save(updatedMovieEntity);
 
         return true;
+    }
+
+    @Override
+    public Movie getMovieByTitle(String title) throws MovieNotFoundException {
+        if (!movieDao.existsByTitle(title)) {
+            throw new MovieNotFoundException("Movie Not Found!");
+        }
+
+        return movieEntityMapper.mapMovieEntity(movieDao.getMovieEntityByTitle(title));
+    }
+
+    @Override
+    public MovieEntity getMovieEntityByTitle(String title) {
+        return movieDao.getMovieEntityByTitle(title);
     }
 }
