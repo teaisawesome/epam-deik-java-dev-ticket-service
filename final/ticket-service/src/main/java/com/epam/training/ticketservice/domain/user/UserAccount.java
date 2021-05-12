@@ -1,7 +1,5 @@
 package com.epam.training.ticketservice.domain.user;
 
-import com.epam.training.ticketservice.service.impl.LoginServiceImpl;
-
 import java.util.Objects;
 
 public class UserAccount implements User {

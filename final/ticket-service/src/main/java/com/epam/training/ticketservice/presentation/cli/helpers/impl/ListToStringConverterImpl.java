@@ -5,7 +5,6 @@ import com.epam.training.ticketservice.domain.user.Movie;
 import com.epam.training.ticketservice.domain.user.Room;
 import com.epam.training.ticketservice.domain.user.Screening;
 import com.epam.training.ticketservice.presentation.cli.helpers.ListToStringConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

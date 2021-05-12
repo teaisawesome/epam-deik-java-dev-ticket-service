@@ -2,7 +2,6 @@ package com.epam.training.ticketservice.repository.impl;
 
 import com.epam.training.ticketservice.dataaccess.dao.RoomDao;
 import com.epam.training.ticketservice.dataaccess.entities.RoomEntity;
-import com.epam.training.ticketservice.domain.user.Room;
 import com.epam.training.ticketservice.mappers.RoomEntityMapper;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.repository.impl.exceptions.RoomNotFoundException;

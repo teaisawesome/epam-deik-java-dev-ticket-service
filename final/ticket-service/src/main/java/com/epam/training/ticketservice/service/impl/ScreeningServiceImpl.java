@@ -53,7 +53,6 @@ public class ScreeningServiceImpl implements ScreeningService {
             List<ScreeningEntity> screenings = screeningRepository
                     .findAllScreeningByRoom(roomEntity);
 
-            // Date plannedScreeningEndTime = DateUtils.addMinutes(startScreening, screenedMovie.getLength());
             Date plannedScreeningEndTime = DateUtils.addMinutes(startScreening, movieEntity.getLength());
 
             for (ScreeningEntity screeningEntity:
@@ -113,4 +112,6 @@ public class ScreeningServiceImpl implements ScreeningService {
         return startScreening.before(plannedScreeningEndTime)
                 && screeningEndTime.after(plannedStartTime);
     }
+
+
 }

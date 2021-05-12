@@ -1,6 +1,5 @@
 package com.epam.training.ticketservice.presentation.cli.handlers;
 
-import com.epam.training.ticketservice.domain.user.Movie;
 import com.epam.training.ticketservice.domain.user.Room;
 import com.epam.training.ticketservice.presentation.cli.helpers.ListToStringConverter;
 import com.epam.training.ticketservice.service.LoginService;

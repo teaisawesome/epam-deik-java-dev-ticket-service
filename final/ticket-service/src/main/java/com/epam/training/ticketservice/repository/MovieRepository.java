@@ -1,7 +1,6 @@
 package com.epam.training.ticketservice.repository;
 
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
-import com.epam.training.ticketservice.domain.user.Movie;
 import com.epam.training.ticketservice.repository.impl.exceptions.MovieNotFoundException;
 
 import java.util.List;

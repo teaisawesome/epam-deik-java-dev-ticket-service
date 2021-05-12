@@ -1,7 +1,5 @@
 package com.epam.training.ticketservice.dataaccess.entities;
 
-import com.epam.training.ticketservice.domain.user.UserAccount;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

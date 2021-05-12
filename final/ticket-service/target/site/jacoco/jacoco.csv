@@ -15,7 +15,7 @@ ticket-service,com.epam.training.ticketservice.presentation.cli,TicketServicePro
 ticket-service,com.epam.training.ticketservice.service.impl.exceptions,ScreeningOverlapException,0,4,0,0,0,2,0,1,0,1
 ticket-service,com.epam.training.ticketservice.service.impl,RoomServiceImpl,0,54,0,0,0,13,0,6,0,6
 ticket-service,com.epam.training.ticketservice.service.impl,MovieServiceImpl,0,54,0,0,0,12,0,6,0,6
-ticket-service,com.epam.training.ticketservice.service.impl,ScreeningServiceImpl,17,140,1,11,3,34,2,10,1,5
+ticket-service,com.epam.training.ticketservice.service.impl,ScreeningServiceImpl,0,157,1,11,0,37,1,11,0,6
 ticket-service,com.epam.training.ticketservice.service.impl,LoginServiceImpl,19,79,5,7,3,20,6,7,1,6
 ticket-service,com.epam.training.ticketservice.presentation.cli.handlers,ScreeningCommandHandler,81,0,4,0,29,0,6,0,4,0
 ticket-service,com.epam.training.ticketservice.presentation.cli.handlers,LoginCommandHandler,50,0,6,0,13,0,7,0,4,0

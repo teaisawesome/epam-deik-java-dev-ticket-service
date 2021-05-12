@@ -206,4 +206,23 @@ public class ScreeningServiceImplTest {
         Mockito.verify(screeningRepository).findAllScreeningByRoom(ROOM_ENTITY_HOLLYWOOD);
         Mockito.verify(screeningRepository).createScreening(noOverlappingPlannedScreeningEntity);
     }
+
+    @Test
+    public void testDeleteScreening() throws RoomNotFoundException, MovieNotFoundException {
+        // Given
+        Mockito.when(roomRepository.getRoomEntityByName(ROOMNAME_HOLLYWOOD))
+                .thenReturn(ROOM_ENTITY_HOLLYWOOD);
+
+        Mockito.when(movieRepository.getMovieEntityByTitle(TITLE_ALIEN))
+                .thenReturn(MOVIE_ENTITY_ALIEN);
+
+        Mockito.when(screeningRepository.deleteScreening(MOVIE_ENTITY_ALIEN, ROOM_ENTITY_HOLLYWOOD, startScreeningDateInDateFormat))
+                .thenReturn(true);
+
+        // When
+        boolean actual = underTest.deleteScreening(TITLE_ALIEN, ROOMNAME_HOLLYWOOD, startScreeningDateInDateFormat);
+
+        // Then
+        Assertions.assertTrue(actual);
+    }
 }
