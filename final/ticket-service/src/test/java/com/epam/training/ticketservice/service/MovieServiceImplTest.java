@@ -23,13 +23,12 @@ public class MovieServiceImplTest {
     private final String GENRE_ALIEN = "horror";
     private final int LENGTH_ALIEN = 122;
     private final MovieEntity MOVIE_ENTITY_ALIEN = new MovieEntity(TITLE_ALIEN, GENRE_ALIEN, LENGTH_ALIEN) ;
+    private final Movie MOVIE_ALIEN = new Movie(TITLE_ALIEN, GENRE_ALIEN, LENGTH_ALIEN);
 
     private final String TITLE_AVENGERS = "Avengers";
     private final String GENRE_AVENGERS = "action";
     private final int LENGTH_AVENGERS = 143;
     private final MovieEntity MOVIE_ENTITY_AVENGERS = new MovieEntity(TITLE_AVENGERS, GENRE_AVENGERS, LENGTH_AVENGERS) ;
-
-    private final Movie MOVIE_ALIEN = new Movie(TITLE_ALIEN, GENRE_ALIEN, LENGTH_ALIEN);
     private final Movie MOVIE_AVENGERS = new Movie(TITLE_AVENGERS, GENRE_AVENGERS, LENGTH_AVENGERS);
 
     @BeforeEach

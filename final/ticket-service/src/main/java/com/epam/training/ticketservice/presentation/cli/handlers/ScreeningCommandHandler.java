@@ -15,7 +15,6 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 @ShellComponent
 public class ScreeningCommandHandler extends AbstractAuthenticatedCommand {
@@ -71,7 +70,7 @@ public class ScreeningCommandHandler extends AbstractAuthenticatedCommand {
         try {
             Date screeningStartTimeInDate = screeningStartDateConverter.convertStringDateToDate(screeningStartTime);
             isDeletionSucceeded =  screeningService.deleteScreening(movieTitle, roomName, screeningStartTimeInDate);
-        } catch (ParseException e) {
+        } catch (ParseException | RoomNotFoundException | MovieNotFoundException e) {
             e.printStackTrace();
         }
         return isDeletionSucceeded ? "Screening Deleted!"

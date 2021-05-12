@@ -67,16 +67,11 @@ public class JpaRoomRepository implements RoomRepository {
     }
 
     @Override
-    public Room getRoomByName(String name) throws RoomNotFoundException {
+    public RoomEntity getRoomEntityByName(String name) throws RoomNotFoundException {
         if (!roomDao.existsByName(name)) {
             throw new RoomNotFoundException("Room Not Found!");
         }
 
-        return roomEntityMapper.mapRoomEntity(roomDao.getRoomEntityByName(name));
-    }
-
-    @Override
-    public RoomEntity getRoomEntityByName(String name) {
         return roomDao.getRoomEntityByName(name);
     }
 }

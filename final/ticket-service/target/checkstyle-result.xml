@@ -1,7 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\configuration\JpaConfiguration.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\dao\MovieDao.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\dao\RoomDao.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\dao\ScreeningDao.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\dao\UserDao.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\entities\MovieEntity.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\entities\RoomEntity.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\entities\ScreeningEntity.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\entities\UserEntity.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\dataaccess\init\UserDatabaseInitializer.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\Movie.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\Room.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\Screening.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\User.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\domain\user\UserAccount.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\impl\MovieEntityMapperImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\impl\RoomEntityMapperImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\impl\ScreeningEntityMapperImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\MovieEntityMapper.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\RoomEntityMapper.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\mappers\ScreeningEntityMapper.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\Application.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\configuration\CliConfiguration.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\AbstractAuthenticatedCommand.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\LoginCommandHandler.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\MovieCommandHandler.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\RoomCommandHandler.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\handlers\ScreeningCommandHandler.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\helpers\impl\ListToStringConverterImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\helpers\impl\ScreeningStartDateConverterImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\helpers\ListToStringConverter.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\helpers\ScreeningStartDateConverter.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\presentation\cli\TicketServicePromptProvider.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\exceptions\MovieNotFoundException.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\exceptions\RoomNotFoundException.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaMovieRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaRoomRepository.java">
+</file>
 <file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaScreeningRepository.java">
 </file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\impl\JpaUserRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\MovieRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\RoomRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\ScreeningRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\repository\UserRepository.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\exceptions\ScreeningOverlapException.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\LoginServiceImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\MovieServiceImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\RoomServiceImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\impl\ScreeningServiceImpl.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\LoginService.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\MovieService.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\RoomService.java">
+</file>
 <file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\java\com\epam\training\ticketservice\service\ScreeningService.java">
+</file>
+<file name="C:\beadando\epam-deik-java-dev\final\ticket-service\src\main\resources\application.properties">
 </file>
 </checkstyle>

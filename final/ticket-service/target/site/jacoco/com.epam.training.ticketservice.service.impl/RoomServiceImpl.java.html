@@ -2,6 +2,7 @@
 
 import com.epam.training.ticketservice.dataaccess.entities.RoomEntity;
 import com.epam.training.ticketservice.domain.user.Room;
+import com.epam.training.ticketservice.mappers.RoomEntityMapper;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.service.RoomService;
 import org.springframework.stereotype.Service;
@@ -13,39 +14,37 @@ import java.util.stream.Collectors;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
+    private final RoomEntityMapper roomEntityMapper;
 
-<span class="nc" id="L17">    public RoomServiceImpl(RoomRepository roomRepository) {</span>
-<span class="nc" id="L18">        this.roomRepository = roomRepository;</span>
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L19">    public RoomServiceImpl(RoomRepository roomRepository, RoomEntityMapper roomEntityMapper) {</span>
+<span class="fc" id="L20">        this.roomRepository = roomRepository;</span>
+<span class="fc" id="L21">        this.roomEntityMapper = roomEntityMapper;</span>
+<span class="fc" id="L22">    }</span>
 
     @Override
     public boolean createRoom(String name, int chairsRowsNumber, int chairsColsNumber) {
-<span class="nc" id="L23">        RoomEntity roomEntity = new RoomEntity(name, chairsRowsNumber, chairsColsNumber);</span>
+<span class="fc" id="L26">        RoomEntity roomEntity = new RoomEntity(name, chairsRowsNumber, chairsColsNumber);</span>
 
-<span class="nc" id="L25">        return roomRepository.saveRoomToDatabase(roomEntity);</span>
+<span class="fc" id="L28">        return roomRepository.saveRoomToDatabase(roomEntity);</span>
     }
 
     @Override
     public boolean deleteRoom(String name) {
-<span class="nc" id="L30">        return roomRepository.deleteRoomFromDatabase(name);</span>
+<span class="fc" id="L33">        return roomRepository.deleteRoomFromDatabase(name);</span>
     }
 
     @Override
     public List&lt;Room&gt; listRooms() {
-<span class="nc" id="L35">        return roomRepository.findAllRooms()</span>
-<span class="nc" id="L36">                .stream()</span>
-<span class="nc" id="L37">                .map(roomEntity -&gt; mapRoomEntity(roomEntity))</span>
-<span class="nc" id="L38">                .collect(Collectors.toList());</span>
+<span class="fc" id="L38">        return roomRepository.findAllRooms()</span>
+<span class="fc" id="L39">                .stream()</span>
+<span class="fc" id="L40">                .map(roomEntity -&gt; roomEntityMapper.mapRoomEntity(roomEntity))</span>
+<span class="fc" id="L41">                .collect(Collectors.toList());</span>
     }
 
     @Override
     public boolean updateRoom(String name, int chairsRowsNumber, int chairsColsNumber) {
-<span class="nc" id="L43">        RoomEntity roomEntity = new RoomEntity(name, chairsRowsNumber, chairsColsNumber);</span>
-<span class="nc" id="L44">        return roomRepository.updateRoomFromDatabase(roomEntity);</span>
-    }
-
-    private Room mapRoomEntity(RoomEntity roomEntity) {
-<span class="nc" id="L48">        return new Room(roomEntity.getName(), roomEntity.getChairsRowsNumber(), roomEntity.getChairsColsNumber());</span>
+<span class="fc" id="L46">        RoomEntity roomEntity = new RoomEntity(name, chairsRowsNumber, chairsColsNumber);</span>
+<span class="fc" id="L47">        return roomRepository.updateRoomFromDatabase(roomEntity);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

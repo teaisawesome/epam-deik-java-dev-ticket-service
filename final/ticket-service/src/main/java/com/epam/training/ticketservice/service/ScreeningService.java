@@ -18,5 +18,5 @@ public interface ScreeningService {
 
     boolean deleteScreening(String movieTitle,
                             String roomName,
-                            Date startScreening);
+                            Date startScreening) throws RoomNotFoundException, MovieNotFoundException;
 }

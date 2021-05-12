@@ -20,48 +20,48 @@ public class RoomEntity {
 
     private int chairsColsNumber;
 
-<span class="nc" id="L23">    public RoomEntity(String name, int chairsRowsNumber, int chairsColsNumber) {</span>
-<span class="nc" id="L24">        this.name = name;</span>
-<span class="nc" id="L25">        this.chairsRowsNumber = chairsRowsNumber;</span>
-<span class="nc" id="L26">        this.chairsColsNumber = chairsColsNumber;</span>
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L23">    public RoomEntity(String name, int chairsRowsNumber, int chairsColsNumber) {</span>
+<span class="fc" id="L24">        this.name = name;</span>
+<span class="fc" id="L25">        this.chairsRowsNumber = chairsRowsNumber;</span>
+<span class="fc" id="L26">        this.chairsColsNumber = chairsColsNumber;</span>
+<span class="fc" id="L27">    }</span>
 
 <span class="nc" id="L29">    public RoomEntity() {</span>
 
 <span class="nc" id="L31">    }</span>
 
     public void setChairsRowsNumber(int chairsRowsNumber) {
-<span class="nc" id="L34">        this.chairsRowsNumber = chairsRowsNumber;</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L34">        this.chairsRowsNumber = chairsRowsNumber;</span>
+<span class="fc" id="L35">    }</span>
 
     public void setChairsColsNumber(int chairsColsNumber) {
-<span class="nc" id="L38">        this.chairsColsNumber = chairsColsNumber;</span>
-<span class="nc" id="L39">    }</span>
+<span class="fc" id="L38">        this.chairsColsNumber = chairsColsNumber;</span>
+<span class="fc" id="L39">    }</span>
 
     public String getName() {
-<span class="nc" id="L42">        return name;</span>
+<span class="fc" id="L42">        return name;</span>
     }
 
     public int getChairsRowsNumber() {
-<span class="nc" id="L46">        return chairsRowsNumber;</span>
+<span class="fc" id="L46">        return chairsRowsNumber;</span>
     }
 
     public int getChairsColsNumber() {
-<span class="nc" id="L50">        return chairsColsNumber;</span>
+<span class="fc" id="L50">        return chairsColsNumber;</span>
     }
 
     @Override
     public boolean equals(Object o) {
-<span class="nc bnc" id="L55" title="All 2 branches missed.">        if (this == o) {</span>
-<span class="nc" id="L56">            return true;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L56">            return true;</span>
         }
-<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="pc bpc" id="L58" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) {</span>
 <span class="nc" id="L59">            return false;</span>
         }
-<span class="nc" id="L61">        RoomEntity that = (RoomEntity) o;</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        return Objects.equals(name, that.name)</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">                &amp;&amp; Objects.equals(chairsRowsNumber, that.chairsRowsNumber)</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">                &amp;&amp; Objects.equals(chairsColsNumber, that.chairsColsNumber);</span>
+<span class="fc" id="L61">        RoomEntity that = (RoomEntity) o;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        return Objects.equals(name, that.name)</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(chairsRowsNumber, that.chairsRowsNumber)</span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(chairsColsNumber, that.chairsColsNumber);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

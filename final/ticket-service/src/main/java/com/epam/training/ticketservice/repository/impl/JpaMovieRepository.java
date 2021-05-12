@@ -66,16 +66,11 @@ public class JpaMovieRepository implements MovieRepository {
     }
 
     @Override
-    public Movie getMovieByTitle(String title) throws MovieNotFoundException {
+    public MovieEntity getMovieEntityByTitle(String title) throws MovieNotFoundException {
         if (!movieDao.existsByTitle(title)) {
             throw new MovieNotFoundException("Movie Not Found!");
         }
 
-        return movieEntityMapper.mapMovieEntity(movieDao.getMovieEntityByTitle(title));
-    }
-
-    @Override
-    public MovieEntity getMovieEntityByTitle(String title) {
         return movieDao.getMovieEntityByTitle(title);
     }
 }

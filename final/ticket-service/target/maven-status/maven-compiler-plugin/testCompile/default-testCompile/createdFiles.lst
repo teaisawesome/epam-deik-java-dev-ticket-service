@@ -1,0 +1,10 @@
+com\epam\training\ticketservice\repository\JpaRoomRepositoryTest.class
+com\epam\training\ticketservice\service\MovieServiceImplTest.class
+com\epam\training\ticketservice\repository\JpaMovieRepositoryTest.class
+com\epam\training\ticketservice\service\ScreeningServiceImplTest.class
+com\epam\training\ticketservice\repository\JpaUserRepositoryTest.class
+com\epam\training\ticketservice\dataaccess\UserDatabaseInitializerTest.class
+com\epam\training\ticketservice\helpers\ScreeningStartDateConverterImplTest.class
+com\epam\training\ticketservice\service\RoomServiceImplTest.class
+com\epam\training\ticketservice\helpers\ListToStringConverterImplTest.class
+com\epam\training\ticketservice\service\LoginServiceImplTest.class

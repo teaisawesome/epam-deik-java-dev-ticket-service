@@ -2,9 +2,12 @@ package com.epam.training.ticketservice.repository;
 
 import com.epam.training.ticketservice.dataaccess.dao.MovieDao;
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
+import com.epam.training.ticketservice.dataaccess.entities.RoomEntity;
 import com.epam.training.ticketservice.domain.user.Movie;
 import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.impl.JpaMovieRepository;
+import com.epam.training.ticketservice.repository.impl.exceptions.MovieNotFoundException;
+import com.epam.training.ticketservice.repository.impl.exceptions.RoomNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -156,6 +159,46 @@ public class JpaMovieRepositoryTest {
         // Then
         Assertions.assertFalse(actual);
         Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testGetMovieEntityByTitleShouldThrowMovieNotFoundExceptionWhenMovieDoesntExists() {
+        // Given
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(false);
+
+        // When
+        Assertions.assertThrows(MovieNotFoundException.class,
+                () -> underTest.getMovieEntityByTitle(TITLE_AVENGERS));
+
+        // Then
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verifyNoMoreInteractions(movieDao);
+    }
+
+    @Test
+    public void testGetMovieEntityByTitleShouldReturnWithMovieEntityByGivenMovieTitle() {
+        // Given
+        Mockito.when(movieDao.existsByTitle(TITLE_AVENGERS))
+                .thenReturn(true);
+        Mockito.when(movieDao.getMovieEntityByTitle(TITLE_AVENGERS))
+                .thenReturn(MOVIE_ENTITY_AVENGERS);
+        MovieEntity expected = MOVIE_ENTITY_AVENGERS;
+
+
+        MovieEntity actual = null;
+        // When
+        try {
+            actual = underTest.getMovieEntityByTitle(TITLE_AVENGERS);
+        } catch (MovieNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Then
+        Assertions.assertEquals(expected, actual);
+        Mockito.verify(movieDao).existsByTitle(TITLE_AVENGERS);
+        Mockito.verify(movieDao).getMovieEntityByTitle(TITLE_AVENGERS);
         Mockito.verifyNoMoreInteractions(movieDao);
     }
 }

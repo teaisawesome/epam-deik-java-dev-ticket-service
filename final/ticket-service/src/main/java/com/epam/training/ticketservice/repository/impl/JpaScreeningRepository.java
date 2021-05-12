@@ -40,7 +40,9 @@ public class JpaScreeningRepository implements ScreeningRepository {
     }
 
     @Override
-    public boolean isScreeningExistsByMovieAndRoomAndStartTime(MovieEntity movieEntity, RoomEntity roomEntity, Date startTime) {
+    public boolean isScreeningExistsByMovieAndRoomAndStartTime(MovieEntity movieEntity,
+                                                               RoomEntity roomEntity,
+                                                               Date startTime) {
         return screeningDao.existsByMovieAndRoomAndStartTime(movieEntity, roomEntity, startTime);
     }
 

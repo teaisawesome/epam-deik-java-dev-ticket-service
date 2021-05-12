@@ -2,7 +2,10 @@
 
 import com.epam.training.ticketservice.dataaccess.dao.MovieDao;
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
+import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.MovieRepository;
+import com.epam.training.ticketservice.repository.impl.exceptions.MovieNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,52 +15,63 @@ import java.util.List;
 public class JpaMovieRepository implements MovieRepository {
 
     private MovieDao movieDao;
+    private final MovieEntityMapper movieEntityMapper;
 
     @Autowired
-<span class="fc" id="L17">    public JpaMovieRepository(MovieDao movieDao) {</span>
-<span class="fc" id="L18">        this.movieDao = movieDao;</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L21">    public JpaMovieRepository(MovieDao movieDao, MovieEntityMapper movieEntityMapper) {</span>
+<span class="fc" id="L22">        this.movieDao = movieDao;</span>
+<span class="fc" id="L23">        this.movieEntityMapper = movieEntityMapper;</span>
+<span class="fc" id="L24">    }</span>
 
     @Override
     public boolean saveMovieToDatabase(MovieEntity movieEntity) {
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (movieDao.existsByTitle(movieEntity.getTitle())) {</span>
-<span class="fc" id="L24">            return false;</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (movieDao.existsByTitle(movieEntity.getTitle())) {</span>
+<span class="fc" id="L29">            return false;</span>
         }
 
-<span class="fc" id="L27">        movieDao.save(movieEntity);</span>
+<span class="fc" id="L32">        movieDao.save(movieEntity);</span>
 
-<span class="fc" id="L29">        return true;</span>
+<span class="fc" id="L34">        return true;</span>
     }
 
     @Override
     public boolean deleteMovieFromDatabase(String title) {
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (!movieDao.existsByTitle(title)) {</span>
-<span class="fc" id="L35">            return false;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (!movieDao.existsByTitle(title)) {</span>
+<span class="fc" id="L40">            return false;</span>
         }
 
-<span class="fc" id="L38">        movieDao.deleteByTitle(title);</span>
+<span class="fc" id="L43">        movieDao.deleteByTitle(title);</span>
 
-<span class="fc" id="L40">        return true;</span>
+<span class="fc" id="L45">        return true;</span>
     }
 
     @Override
     public List&lt;MovieEntity&gt; findAllMovies() {
-<span class="fc" id="L45">        return movieDao.findAll();</span>
+<span class="fc" id="L50">        return movieDao.findAll();</span>
     }
 
     @Override
     public boolean updateMovieFromDatabase(MovieEntity movieEntity) {
-<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (!movieDao.existsByTitle(movieEntity.getTitle())) {</span>
-<span class="fc" id="L51">            return false;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (!movieDao.existsByTitle(movieEntity.getTitle())) {</span>
+<span class="fc" id="L56">            return false;</span>
         }
 
-<span class="fc" id="L54">        MovieEntity updatedMovieEntity = movieDao.getMovieEntityByTitle(movieEntity.getTitle());</span>
-<span class="fc" id="L55">        updatedMovieEntity.setGenre(movieEntity.getGenre());</span>
-<span class="fc" id="L56">        updatedMovieEntity.setLength(movieEntity.getLength());</span>
+<span class="fc" id="L59">        MovieEntity updatedMovieEntity = movieDao.getMovieEntityByTitle(movieEntity.getTitle());</span>
+<span class="fc" id="L60">        updatedMovieEntity.setGenre(movieEntity.getGenre());</span>
+<span class="fc" id="L61">        updatedMovieEntity.setLength(movieEntity.getLength());</span>
 
-<span class="fc" id="L58">        movieDao.save(updatedMovieEntity);</span>
+<span class="fc" id="L63">        movieDao.save(updatedMovieEntity);</span>
 
-<span class="fc" id="L60">        return true;</span>
+<span class="fc" id="L65">        return true;</span>
+    }
+
+    @Override
+    public MovieEntity getMovieEntityByTitle(String title) throws MovieNotFoundException {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (!movieDao.existsByTitle(title)) {</span>
+<span class="fc" id="L71">            throw new MovieNotFoundException(&quot;Movie Not Found!&quot;);</span>
+        }
+
+<span class="fc" id="L74">        return movieDao.getMovieEntityByTitle(title);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

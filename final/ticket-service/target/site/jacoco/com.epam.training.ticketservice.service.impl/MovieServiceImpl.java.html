@@ -2,9 +2,9 @@
 
 import com.epam.training.ticketservice.dataaccess.entities.MovieEntity;
 import com.epam.training.ticketservice.domain.user.Movie;
+import com.epam.training.ticketservice.mappers.MovieEntityMapper;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,39 +13,36 @@ import java.util.stream.Collectors;
 @Service
 public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
+    private final MovieEntityMapper movieEntityMapper;
 
-    @Autowired
-<span class="fc" id="L18">    public MovieServiceImpl(MovieRepository movieRepository) {</span>
+<span class="fc" id="L18">    public MovieServiceImpl(MovieRepository movieRepository, MovieEntityMapper movieEntityMapper) {</span>
 <span class="fc" id="L19">        this.movieRepository = movieRepository;</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L20">        this.movieEntityMapper = movieEntityMapper;</span>
+<span class="fc" id="L21">    }</span>
 
     @Override
     public boolean createMovie(String title, String genre, int length) {
-<span class="fc" id="L24">        MovieEntity movieEntity = new MovieEntity(title, genre, length);</span>
+<span class="fc" id="L25">        MovieEntity movieEntity = new MovieEntity(title, genre, length);</span>
 
-<span class="fc" id="L26">        return movieRepository.saveMovieToDatabase(movieEntity);</span>
+<span class="fc" id="L27">        return movieRepository.saveMovieToDatabase(movieEntity);</span>
     }
 
     @Override
     public boolean deleteMovie(String title) {
-<span class="fc" id="L31">        return movieRepository.deleteMovieFromDatabase(title);</span>
+<span class="fc" id="L32">        return movieRepository.deleteMovieFromDatabase(title);</span>
     }
 
     @Override
     public List&lt;Movie&gt; listMovies() {
-<span class="fc" id="L36">        return movieRepository.findAllMovies()</span>
-<span class="fc" id="L37">                .stream()</span>
-<span class="fc" id="L38">                .map(movieEntity -&gt; mapMovieEntity(movieEntity)).collect(Collectors.toList());</span>
+<span class="fc" id="L37">        return movieRepository.findAllMovies()</span>
+<span class="fc" id="L38">                .stream()</span>
+<span class="fc" id="L39">                .map(movieEntity -&gt; movieEntityMapper.mapMovieEntity(movieEntity)).collect(Collectors.toList());</span>
     }
 
     @Override
     public boolean updateMovie(String title, String genre, int length) {
-<span class="fc" id="L43">        MovieEntity movieEntity = new MovieEntity(title, genre, length);</span>
-<span class="fc" id="L44">        return movieRepository.updateMovieFromDatabase(movieEntity);</span>
-    }
-
-    private Movie mapMovieEntity(MovieEntity movieEntity) {
-<span class="fc" id="L48">        return new Movie(movieEntity.getTitle(), movieEntity.getGenre(), movieEntity.getLength());</span>
+<span class="fc" id="L44">        MovieEntity movieEntity = new MovieEntity(title, genre, length);</span>
+<span class="fc" id="L45">        return movieRepository.updateMovieFromDatabase(movieEntity);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -15,7 +15,5 @@ public interface MovieRepository {
 
     boolean updateMovieFromDatabase(MovieEntity movieEntity);
 
-    Movie getMovieByTitle(String title) throws MovieNotFoundException;
-
-    MovieEntity getMovieEntityByTitle(String title);
+    MovieEntity getMovieEntityByTitle(String title) throws MovieNotFoundException;
 }
