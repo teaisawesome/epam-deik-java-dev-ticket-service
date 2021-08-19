@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface UserRepository {
     Optional<UserAccount> getUserByUsernameAndPassword(String username, String password);
+
+    boolean createNonAdminAccount(String username, String password);
 }
