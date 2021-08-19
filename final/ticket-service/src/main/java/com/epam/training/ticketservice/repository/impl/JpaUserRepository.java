@@ -34,6 +34,10 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public boolean createNonAdminAccount(String username, String password) {
         try {
+            if(userDao.existsByUsername(username)) {
+                throw new IllegalArgumentException("Username is already taken");
+            }
+
             UserEntity newUserEntity = new UserEntity(username, password, false);
 
             userDao.save(newUserEntity);

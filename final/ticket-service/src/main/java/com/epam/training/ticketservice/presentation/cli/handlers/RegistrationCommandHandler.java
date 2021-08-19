@@ -16,6 +16,6 @@ public class RegistrationCommandHandler {
     public String registration(String username, String password) {
         boolean isSuccess = registrationService.registNewAccount(username, password);
 
-        return isSuccess ? "Registration was successful!" : "Registration failed! Try again!";
+        return isSuccess ? "Registration was successful!" : "Registration failed! Username is already taken!";
     }
 }
