@@ -6,7 +6,7 @@ import com.epam.training.ticketservice.domain.user.UserAccount;
 import java.util.Optional;
 
 public interface LoginService {
-    Optional<UserAccount> signIn(String username, String password);
+    Optional<UserAccount> signInWithPrivileged(String username, String password);
 
     Optional<UserAccount>  describeLoggedInAccount();
 

@@ -36,7 +36,7 @@ public class LoginServiceImplTest
                 .thenReturn(Optional.of(expectedUserAccount));
 
         // When
-        Optional<UserAccount> actual = underTest.signIn(USERNAME, PASSWORD);
+        Optional<UserAccount> actual = underTest.signInWithPrivileged(USERNAME, PASSWORD);
 
         // Then
         Assertions.assertEquals(expected, actual);
@@ -53,7 +53,7 @@ public class LoginServiceImplTest
                 .thenReturn(Optional.empty());
 
         // When
-        Optional<UserAccount> actual = underTest.signIn("kakao", "kakao");
+        Optional<UserAccount> actual = underTest.signInWithPrivileged("kakao", "kakao");
 
         // Then
         Assertions.assertEquals(expected, actual);

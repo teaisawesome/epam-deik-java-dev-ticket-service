@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public Optional<UserAccount> signIn(String username, String password) {
+    public Optional<UserAccount> signInWithPrivileged(String username, String password) {
         Optional<UserAccount> userAccount = userRepository.getAdminByUsernameAndPassword(username, password);
 
         loggedUser = userAccount.orElse(null);
