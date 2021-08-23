@@ -30,15 +30,15 @@ public class JpaUserRepositoryTest {
     public void testGetUserByUsernameAndPasswordShouldReturnOptionalEmptyWhenCannotFindUserWithGivenUsernameAndPassword() {
         // Given
         Optional<UserAccount> expected = Optional.empty();
-        Mockito.when(userDao.findUserEntityByUsernameAndPassword("bob","bob"))
+        Mockito.when(userDao.findUserEntityByUsernameAndPasswordAndAdminAccount("bob","bob", true))
                 .thenReturn(Optional.empty());
 
         // When
-        Optional<UserAccount> actual = underTest.getUserByUsernameAndPassword("bob","bob");
+        Optional<UserAccount> actual = underTest.getAdminByUsernameAndPassword("bob","bob");
 
         // Then
         Assertions.assertEquals(expected, actual);
-        Mockito.verify(userDao).findUserEntityByUsernameAndPassword("bob","bob");
+        Mockito.verify(userDao).findUserEntityByUsernameAndPasswordAndAdminAccount("bob","bob", true);
         Mockito.verifyNoMoreInteractions(userDao);
     }
 
@@ -46,13 +46,13 @@ public class JpaUserRepositoryTest {
     public void testGetUserByUsernameAndPasswordShouldReturnUserAccountWhenUserFindWithGivenUsernameAndPassword() {
         // Given
         UserEntity userEntity = new UserEntity(USERNAME, PASSWORD,true);
-        Mockito.when(userDao.findUserEntityByUsernameAndPassword(USERNAME,PASSWORD))
+        Mockito.when(userDao.findUserEntityByUsernameAndPasswordAndAdminAccount(USERNAME,PASSWORD, true))
                 .thenReturn(Optional.of(userEntity));
         UserAccount userAccount = new UserAccount(USERNAME, PASSWORD, true);
         Optional<UserAccount> expected = Optional.of(userAccount);
 
         // When
-        Optional<UserAccount> actual = underTest.getUserByUsernameAndPassword(USERNAME, PASSWORD);
+        Optional<UserAccount> actual = underTest.getAdminByUsernameAndPassword(USERNAME, PASSWORD);
 
         // Then
         Assertions.assertEquals(expected, actual);

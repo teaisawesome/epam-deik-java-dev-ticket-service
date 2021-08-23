@@ -21,8 +21,8 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<UserAccount> getUserByUsernameAndPassword(String username, String password) {
-        Optional<UserEntity> result = userDao.findUserEntityByUsernameAndPassword(username, password);
+    public Optional<UserAccount> getAdminByUsernameAndPassword(String username, String password) {
+        Optional<UserEntity> result = userDao.findUserEntityByUsernameAndPasswordAndAdminAccount(username, password, true);
 
         if (result.isPresent()) {
             return Optional.of(mapUserEntity(result.get()));
@@ -30,6 +30,18 @@ public class JpaUserRepository implements UserRepository {
 
         return Optional.empty();
     }
+
+    @Override
+    public Optional<UserAccount> getUserAccountByUsernameAndPassword(String username, String password) {
+        Optional<UserEntity> result = userDao.findUserEntityByUsernameAndPasswordAndAdminAccount(username, password, false);
+
+        if (result.isPresent()) {
+            return Optional.of(mapUserEntity(result.get()));
+        }
+
+        return Optional.empty();
+    }
+
 
     @Override
     public boolean createNonAdminAccount(String username, String password) {

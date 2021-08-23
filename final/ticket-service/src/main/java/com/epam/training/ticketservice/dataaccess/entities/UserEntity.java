@@ -17,14 +17,16 @@ public class UserEntity {
     @Column(unique = true)
     private String username;
 
+    @Column
     private String password;
 
-    private boolean isAdmin;
+    @Column
+    private boolean adminAccount;
 
     public UserEntity(String username, String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.adminAccount = isAdmin;
     }
 
     public UserEntity() {
@@ -40,7 +42,7 @@ public class UserEntity {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return adminAccount;
     }
 
     @Override
@@ -54,16 +56,16 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
         return Objects.equals(username, that.username)
                 && Objects.equals(password, that.password)
-                && Objects.equals(isAdmin, that.isAdmin);
+                && Objects.equals(adminAccount, that.adminAccount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, isAdmin);
+        return Objects.hash(username, password, adminAccount);
     }
 
     @Override
     public String toString() {
-        return "UserEntity{" + "username=" + username + "password=" + password + ", isAdmin=" + isAdmin + '}';
+        return "UserEntity{" + "username=" + username + "password=" + password + ", isAdmin=" + adminAccount + '}';
     }
 }

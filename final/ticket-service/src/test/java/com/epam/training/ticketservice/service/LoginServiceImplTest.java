@@ -32,16 +32,16 @@ public class LoginServiceImplTest
         // Given
         UserAccount expectedUserAccount = new UserAccount("admin", "admin", true);
         Optional<UserAccount> expected = Optional.of(expectedUserAccount);
-        Mockito.when(userRepository.getUserByUsernameAndPassword(USERNAME, PASSWORD))
+        Mockito.when(userRepository.getAdminByUsernameAndPassword(USERNAME, PASSWORD))
                 .thenReturn(Optional.of(expectedUserAccount));
 
         // When
-        Optional<UserAccount> actual = underTest.signIn(USERNAME, PASSWORD);
+        Optional<UserAccount> actual = underTest.signInWithPrivileged(USERNAME, PASSWORD);
 
         // Then
         Assertions.assertEquals(expected, actual);
         Assertions.assertEquals(new LoginServiceImpl(userRepository, expectedUserAccount), underTest);
-        Mockito.verify(userRepository).getUserByUsernameAndPassword(USERNAME, PASSWORD);
+        Mockito.verify(userRepository).getAdminByUsernameAndPassword(USERNAME, PASSWORD);
         Mockito.verifyNoMoreInteractions(userRepository);
     }
 
@@ -49,16 +49,16 @@ public class LoginServiceImplTest
     public void testSignInShouldReturnOptionalEmptyWhenUsernameAndPasswordAreIncorrect() {
         // Given
         Optional<UserAccount> expected = Optional.empty();
-        Mockito.when(userRepository.getUserByUsernameAndPassword("kakao", "kakao"))
+        Mockito.when(userRepository.getAdminByUsernameAndPassword("kakao", "kakao"))
                 .thenReturn(Optional.empty());
 
         // When
-        Optional<UserAccount> actual = underTest.signIn("kakao", "kakao");
+        Optional<UserAccount> actual = underTest.signInWithPrivileged("kakao", "kakao");
 
         // Then
         Assertions.assertEquals(expected, actual);
         Assertions.assertEquals(new LoginServiceImpl(userRepository, null), underTest);
-        Mockito.verify(userRepository).getUserByUsernameAndPassword("kakao", "kakao");
+        Mockito.verify(userRepository).getAdminByUsernameAndPassword("kakao", "kakao");
         Mockito.verifyNoMoreInteractions(userRepository);
     }
 
