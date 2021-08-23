@@ -7,9 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserDao extends JpaRepository<UserEntity, UUID> {
-    Optional<UserEntity> findUserEntityByUsernameAndPassword(String username, String password);
-
-    Optional<UserEntity> findUserEntityByUsernameAndPasswordAndAdminIsFalse(String username, String password);
+    Optional<UserEntity> findUserEntityByUsernameAndPasswordAndAdminAccount(String username, String password, boolean admin);
 
     boolean existsByUsername(String username);
 }
