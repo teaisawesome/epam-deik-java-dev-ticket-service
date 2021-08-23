@@ -18,8 +18,15 @@ public class LoginCommandHandler {
     }
 
     @ShellMethod(value = "Login as Admin User", key = "sign in privileged")
-    public String login(String username, String password) {
-        Optional<UserAccount> userAccount = loginService.signInWithPrivileged(username, password);
+    public String loginWithPrivilegedAccount(String username, String password) {
+        Optional<UserAccount> privilegedAccount = loginService.signInWithPrivileged(username, password);
+
+        return privilegedAccount.isPresent() ? "Login success" : "Login failed due to incorrect credentials";
+    }
+
+    @ShellMethod(value = "Login as Normal User", key = "sign in")
+    public String loginWithNormalAccount(String username, String password) {
+        Optional<UserAccount> userAccount = loginService.signInWithUser(username, password);
 
         return userAccount.isPresent() ? "Login success" : "Login failed due to incorrect credentials";
     }
