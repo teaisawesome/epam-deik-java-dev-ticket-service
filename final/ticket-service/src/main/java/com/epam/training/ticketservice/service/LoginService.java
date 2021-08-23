@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface LoginService {
     Optional<UserAccount> signInWithPrivileged(String username, String password);
 
+    Optional<UserAccount> signInWithUser(String username, String password);
+
     Optional<UserAccount>  describeLoggedInAccount();
 
     void signOut();

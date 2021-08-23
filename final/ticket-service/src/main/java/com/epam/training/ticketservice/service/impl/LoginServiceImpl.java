@@ -36,6 +36,15 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public Optional<UserAccount> signInWithUser(String username, String password) {
+        Optional<UserAccount> userAccount = userRepository.getUserAccountByUsernameAndPassword(username, password);
+
+        loggedUser = userAccount.orElse(null);
+
+        return Optional.ofNullable(loggedUser);
+    }
+
+    @Override
     public Optional<UserAccount> describeLoggedInAccount() {
         if (loggedUser == null) {
             return Optional.ofNullable(null);
