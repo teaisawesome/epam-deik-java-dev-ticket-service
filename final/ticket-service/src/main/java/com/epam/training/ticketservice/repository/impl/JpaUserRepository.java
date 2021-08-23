@@ -32,6 +32,18 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
+    public Optional<UserAccount> getUserAccountByUsernameAndPassword(String username, String password) {
+        Optional<UserEntity> result = userDao.findUserEntityByUsernameAndPasswordAndAdminAccount(username, password, false);
+
+        if (result.isPresent()) {
+            return Optional.of(mapUserEntity(result.get()));
+        }
+
+        return Optional.empty();
+    }
+
+
+    @Override
     public boolean createNonAdminAccount(String username, String password) {
         try {
             if(userDao.existsByUsername(username)) {
